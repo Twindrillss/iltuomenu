@@ -68,8 +68,8 @@ if (!class_exists("ieimenupdf")) {
 
         public function iei_menu_external_page()
         {
-            echo '<h2>Internet & Idee</h2>';
-            echo '<p>Questo plugin è stato sviluppato da <a target="_blank" href="https://internet-idee.net">Internet & Idee</a></p>';
+            echo '<h2>Info sul plugin</h2>';
+            echo '<p>Questo plugin è stato sviluppato da Daniel Intrieri per <a target="_blank" href="https://internet-idee.net">Internet & Idee</a></p>';
             echo '<img style="width:250px;" src="https://www.internet-idee.net/assets/img/colore.svg"/>';
             // Contenuto
         }
