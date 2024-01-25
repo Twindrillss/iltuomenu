@@ -21,3 +21,8 @@ Per evitare problemi di compatibilità, il pdf viene convertito automaticamente 
 <h3>Nota sugli Shortcode</h3>
 
 Oltre al sopracitato shortcode, ne esiste un altro che permette di personalizzare l'etichetta. Per utilizzarlo digitare: [ieimenupdf_content_a etichetta="  "], inserendo il testo da visualizzare sull'etichetta tra le virgolette "". Questo altro shortcode, contrariamente al primo, inserisce un tag di tipo <a>.
+
+
+<h3>Note</h3>
+
+Questo progetto usa la libreria <a target="_blank" href="https://github.com/mozilla/pdf.js/">pdf.js</a> di Mozilla (nello specifico, la versione utilizzata è la 3.11)
