@@ -15,7 +15,7 @@ Per evitare problemi di compatibilità, il pdf viene convertito automaticamente 
 
 <li>Lo shortcode può essere posizionato su qualsiasi pagina su cui si vuole mostrare il menu.</li>
 
-
+<br>
 <b>NOTA IMPORTANTE: PER ASSICURARSI CHE IL PLUGIN FUNZIONI CORRETTAMENTE, E' NECESSARIO CHE IL FILE ZIP CONTENENTE I FILE DELLO STESSO ABBIA QUESTO NOME: ieimenupdf.zip</b>
 
 <h3>Nota sugli Shortcode</h3>
