@@ -172,8 +172,6 @@ if (!class_exists("ieimenupdf")) {
         // AGGIUNGO CSS A HEADER DI WORDPRESS
 function custom_header_content() {
     // Add your custom content here
-    $urlcomp = get_home_url().'/wp-content/plugins/ieimenupdf/';
-    echo '<script src="'.$urlcomp.'pdf.js"></script>';
     
    
     echo generacssmodal();
