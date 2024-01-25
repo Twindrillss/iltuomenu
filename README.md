@@ -7,7 +7,7 @@ Per evitare problemi di compatibilità, il pdf viene convertito automaticamente 
 
 <h3>Guida veloce all'utilizzo</h3>
 
-<li>Per lavorare subito con il plugin, scaricare l'ultima versione oppure scaricare lo zip della repo.</li>
+<li>Per lavorare subito con il plugin, <a href="https://github.com/Twindrillss/iltuomenu/releases/tag/pub">scaricare lo zip dell'ultima release facendo click qui</a>.</li>
 
 <li>Caricare quindi lo zip sul sito wordpress nella sezione plugin. In seguito attivare il plugin.</li>
 
