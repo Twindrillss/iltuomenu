@@ -16,8 +16,6 @@ Per evitare problemi di compatibilità, il pdf viene convertito automaticamente 
 <li>Lo shortcode può essere posizionato su qualsiasi pagina su cui si vuole mostrare il menu.</li>
 
 <br>
-<b>NOTA IMPORTANTE: PER ASSICURARSI CHE IL PLUGIN FUNZIONI CORRETTAMENTE, E' NECESSARIO CHE IL FILE ZIP CONTENENTE I FILE DELLO STESSO ABBIA QUESTO NOME: ieimenupdf.zip</b>
-
 <h3>Nota sugli Shortcode</h3>
 
 Oltre al sopracitato shortcode, ne esiste un altro che permette di personalizzare l'etichetta. Per utilizzarlo digitare: [ieimenupdf_content_a etichetta="  "], inserendo il testo da visualizzare sull'etichetta tra le virgolette "". Questo altro shortcode, contrariamente al primo, inserisce un tag di tipo A.
