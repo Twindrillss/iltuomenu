@@ -14,13 +14,22 @@ $results = $wpdb->get_results($query);
 
 
 $controllo = false;
+$selezionesenzafine = false;
 
 foreach ($results as $result) {
+
+ 
+
 
 $dataconfrontoiniziounix = strtotime($result->data_partenza);
 $dataconfrontofineunix = strtotime($result->data_fine);
 
+$hafine = $result->hafine;
 
+
+if ($hafine){
+
+  if (!$selezionesenzafine){
 if ($datacorrenteunix <= $dataconfrontofineunix){
     if ($datacorrenteunix >= $dataconfrontoiniziounix){
         $controllo = true;
@@ -28,14 +37,23 @@ if ($datacorrenteunix <= $dataconfrontofineunix){
     $urlfileprescelto = $result->url_completo;
     }
 }
-
+  }
+} else {
+  $controllo = true;
+  $selezionesenzafine = true;
+  $nomefileprescelto = $result->nome_file;
+  $urlfileprescelto = $result->url_completo;
+  
+}
 
 
 }
 
 if ($controllo){
-    $urlcomp = get_home_url().'/wp-content/plugins/ieimenupdf/menu/';
+    $cartelle = dirname(__FILE__);
+    $ultimacartella = basename($cartelle);
 
+    $urlcomp = get_home_url().'/wp-content/plugins/'.$ultimacartella.'/menu/';
 
     $finalurl = $urlcomp.$urlfileprescelto;
 
@@ -228,7 +246,10 @@ function generajsmodal() {
 
 function generahtmlmodal($filepdf){
 
-    $urlcomp = get_home_url().'/wp-content/plugins/ieimenupdf/';
+    $cartelle = dirname(__FILE__);
+    $ultimacartella = basename($cartelle);
+
+    $urlcomp = get_home_url().'/wp-content/plugins/'.$ultimacartella.'/';
     
 return '
 <div style="text-align:center;z-index:5000;">
@@ -371,7 +392,10 @@ return '
 
 function generahtmlmodalridotto($filepdf,$etichetta){
 
-    $urlcomp = get_home_url().'/wp-content/plugins/ieimenupdf/';
+    $cartelle = dirname(__FILE__);
+    $ultimacartella = basename($cartelle);
+
+    $urlcomp = get_home_url().'/wp-content/plugins/'.$ultimacartella.'/';
     
   return '
   <div style="z-index:5000;">
