@@ -16,6 +16,35 @@ table {
   
   tr:nth-child(even){background-color: #f2f2f2 !important}
 
+
+  @media only screen and (min-width: 600px) {
+
+  .dacapospec {
+display:none;
+  }
+
+  .selettore {
+    display:inline-block;
+  }
+  .pos {
+    display:inline-block;
+  }
+
+}
+
+
+@media only screen and (max-width: 600px) { 
+    .selettore {
+    display:block;
+  }
+
+  .pos {
+    text-align:center;
+    display:block;
+  }
+    
+}
+
   </style>
 
 <?php
@@ -73,8 +102,18 @@ $results = $wpdb->get_results($query);
 $esitofile = "";
 
 if(isset($_POST["invia"])) {
-  $campoinizio = $_POST['datainizio'];
-    $campofine = $_POST['datafine'];
+  
+    
+
+    if (isset($_POST['fineindicata'])){
+        $fineindicata = true;
+        $campoinizio = $_POST['datainizio'];
+        $campofine = $_POST['datafine'];
+    } else {
+        $fineindicata = false;
+        $campoinizio = '0000-00-00';
+        $campofine = '0000-00-00';
+    }
 
   if (!empty($campoinizio)&& !empty($campofine)) {
     
@@ -97,7 +136,10 @@ if ($uploadOk){
         $esitofile = "Il file ". $nomefile . " è stato caricato.";
 
         // QUERY SUL DATABASE PER INSERIMENTO FILE
-$query = "INSERT INTO {$wpdb->prefix}listapdf (nome_file, url_completo, data_partenza, data_fine) VALUES ('$nomefile','$nomefile','$campoinizio','$campofine')";
+
+        
+
+$query = "INSERT INTO {$wpdb->prefix}listapdf (nome_file, url_completo, hafine, data_partenza, data_fine) VALUES ('$nomefile','$nomefile','$fineindicata','$campoinizio','$campofine')";
 
 // ESECUZIONE QUERY
 $results = $wpdb->get_results($query);
@@ -136,16 +178,26 @@ $results = $wpdb->get_results($query);
 
 <h2>Carica un nuovo menu</h2>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>?page=iei-menu-dashboard" method="post" enctype="multipart/form-data">
+
+<div class="pos">
   <label for="pdfFile">Scegli file PDF:</label>
   <input type="file" id="fileToUpload" name="fileToUpload" accept="application/pdf">
+</div>
   
+  <div class="selettore" style="border-width:2px; border-style:solid; border-color:#dcdcde; border-radius:10px; padding:10px; text-align:center;">
+  <input onclick="statocheckbox()" type="checkbox" id="fineindicata" name="fineindicata" value="1">
+  <label for="fineindicata"> Questo menu ha una scadenza</label><br>
+<p style="margin-top:15px;">
   <label for="datainizio">Imposta data inizio</label>
   <input type="date" id="datainizio" name="datainizio">
-
+<br class="dacapospec">
   <label for="datafine">Imposta data fine</label>
   <input type="date" id="datafine" name="datafine">
-
+</p>
+</div>
+<div class="pos">
   <input type="submit" name="invia" value="Carica">
+</div>
 </form>
 
 <p style="color:red;font-weight:bold;"><?php echo $esitofile; ?></p>
@@ -169,9 +221,22 @@ foreach ($results as $result) {
 
     echo '<tr><td>'.$result->nome_file.'</td>';
 
-    echo '<td>'.$result->data_partenza.'</td>';
 
-    echo '<td>'.$result->data_fine.'</td>';
+    if ($result->hafine){
+        echo '<td>'.$result->data_partenza.'</td>';
+
+        echo '<td>'.$result->data_fine.'</td>';
+    } else {
+
+
+        echo '<td> -- </td>';
+
+        echo '<td> -- </td>';
+
+    }
+
+
+    
 
     echo '<td><button onclick="elimina('.$result->id.')">elimina</button></td></tr>';
 
@@ -198,8 +263,13 @@ echo '<b>Per vederlo nel browser clicca qui: <a target="_blank" href="'.$arrayri
   echo '<b>Non esiste un menu attivo in questo momento, controlla le date dei file caricati oppure carica un nuovo file.</b>';
 }
 ?>
+<br><br>
+<i>Nota: se si inserisce un menu SENZA scadenza, quelli CON scadenza non verranno mai presi in condiserazione.</i><br>
+<i>Nota sul comportamento: in caso di conflitto, verrà preferito sempre il menu caricato più recentemente.</i>
 </div>
 <script>
+
+    statocheckbox();
 
 function elimina(elemento){
     updateURLParameter('elimina', elemento);
@@ -224,6 +294,22 @@ function updateURLParameter(key, value) {
 
   // Refresh the page with the updated URL
   window.location.href = url;
+}
+
+
+function statocheckbox () {
+
+
+    if (document.getElementById("fineindicata").checked){
+        // alert ("checkata");
+        document.getElementById('datainizio').disabled = false;
+        document.getElementById('datafine').disabled = false;
+    } else {
+        document.getElementById('datainizio').disabled = true;
+        document.getElementById('datafine').disabled = true;
+        // alert ("non checkata");
+    }
+
 }
 
 </script>
