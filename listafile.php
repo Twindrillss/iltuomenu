@@ -53,7 +53,11 @@ display:none;
 global $wpdb;
 
 //impostazione variabile per tutte le operazioni di lettura/scrittura su directory
-$target_dir = $_SERVER['DOCUMENT_ROOT']."/wp-content/plugins/ieimenupdf/menu/";
+
+$cartelle = dirname(__FILE__);
+$ultimacartella = basename($cartelle);
+
+$target_dir = $_SERVER['DOCUMENT_ROOT']."/wp-content/plugins/".$ultimacartella."/menu/";
 ?>
 
 
@@ -156,12 +160,6 @@ $results = $wpdb->get_results($query);
 // QUI AVVIENE IL CARICAMENTO DI UN FILE
 ?>
 
-
-<?php
-$urlcomp = get_home_url();
-echo '<link rel="stylesheet" href="'.$urlcomp.'/wp-content/plugins/ieimenupdf/elementi/style.css">';
-
-?>
 
 
 <?php 
