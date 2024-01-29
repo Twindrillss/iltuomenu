@@ -97,6 +97,7 @@ if (!class_exists("ieimenupdf")) {
                     id mediumint(9) NOT NULL AUTO_INCREMENT,
                     nome_file varchar(255) NOT NULL,
                     url_completo varchar(255) NOT NULL,
+                    hafine boolean NULL DEFAULT NULL,
                     data_partenza date NOT NULL,
                     data_fine date NOT NULL,
                     PRIMARY KEY (id)
