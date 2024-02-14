@@ -53,7 +53,7 @@ if ($controllo){
     $cartelle = dirname(__FILE__);
     $ultimacartella = basename($cartelle);
 
-    $urlcomp = site_url()().'/wp-content/plugins/'.$ultimacartella.'/menu/';
+    $urlcomp = site_url().'/wp-content/plugins/'.$ultimacartella.'/menu/';
 
     $finalurl = $urlcomp.$urlfileprescelto;
 
@@ -249,7 +249,7 @@ function generahtmlmodal($filepdf){
     $cartelle = dirname(__FILE__);
     $ultimacartella = basename($cartelle);
 
-    $urlcomp = site_url()().'/wp-content/plugins/'.$ultimacartella.'/';
+    $urlcomp = site_url().'/wp-content/plugins/'.$ultimacartella.'/';
     
 return '
 <div style="text-align:center;z-index:5000;">
