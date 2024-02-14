@@ -75,7 +75,7 @@ function generacssmodal (){
 
     return '<style>
 
-    .pdf-container {
+    .menu-pdf-container {
 
         max-height: 100%;
         width: 100%;
@@ -108,7 +108,7 @@ margin-top:15px;
 
 }
         
-    .modal {
+    .menu-modal {
         display: none;
         position: fixed;
         top: 0;
@@ -122,7 +122,7 @@ margin-top:15px;
       }
   
       /* Contenuto modal */
-      .modal-content {
+      .menu-modal-content {
         background-color: #fff;
         width: 80%;
 		
@@ -137,7 +137,7 @@ margin-top:15px;
       padding:10px;
         position: absolute;
         top: 10px;
-        right: 10px;
+        right: 0px;
         font-size: 20px;
         cursor: pointer;
         color: white;
@@ -260,8 +260,8 @@ return '
 <button class="bottonebello" onclick="openModal()">Apri il Menu</button>
 </div>
 <!-- Modale PDF -->
-  <div style="background-color:white;" id="pdfModal" class="modal" onscroll="stopScrollPropagation(event)">
-    <div class="modal-content">
+  <div style="background-color:white;" id="pdfModal" class="menu-modal" onscroll="stopScrollPropagation(event)">
+    <div class="menu-modal-content">
       <!-- Close button -->
       <span class="close" onclick="closeModal()">&times;</span>
       
@@ -370,7 +370,7 @@ return '
         });
       </script>
       
-      <div class="pdf-container" style="overflow:scroll;">
+      <div class="menu-pdf-container" style="overflow:scroll;">
       <canvas style="width:100%;" id="the-canvas"></canvas>
       
       <div class="button-container">
@@ -405,8 +405,8 @@ function generahtmlmodalridotto($filepdf,$etichetta){
   <div style="z-index:5000;">
   <div style="text-align:center;margin-bottom:12px;"><a style="font-size:20px;text-transform: uppercase;cursor: pointer;" onclick="openModal()">'.$etichetta.'</a></div>
   <!-- Modale PDF -->
-  <div style="background-color:white;" id="pdfModal" class="modal" onscroll="stopScrollPropagation(event)">
-    <div class="modal-content">
+  <div style="background-color:white;" id="pdfModal" class="menu-modal" onscroll="stopScrollPropagation(event)">
+    <div class="menu-modal-content">
       <!-- Close button -->
       <span class="close" onclick="closeModal()">&times;</span>
       
@@ -515,7 +515,7 @@ function generahtmlmodalridotto($filepdf,$etichetta){
   });
 </script>
 
-<div class="pdf-container" style="overflow:scroll;">
+<div class="menu-pdf-container" style="overflow:scroll;">
 <canvas style="width:100%;" id="the-canvas"></canvas>
 
 <div class="button-container">
