@@ -76,11 +76,11 @@ function generacssmodal (){
     return '<style>
 
     .pdf-container {
-        overflow-y: auto;
-        overflow-x:hidden;
-        max-height: 100%; /* Adjust as needed */
+
+        max-height: 100%;
         width: 100%;
         margin-bottom: 20px;
+		text-align:center;
       }
       
 	
@@ -94,6 +94,7 @@ margin-top:50px;
     display: flex;
     justify-content: space-between;
     padding: 10px;
+	
 }
 
 }
@@ -102,6 +103,7 @@ margin-top:50px;
 
 .button-container {
 text-align:center;
+margin-top:15px;
 }
 
 }
@@ -122,9 +124,11 @@ text-align:center;
       /* Contenuto modal */
       .modal-content {
         background-color: #fff;
-        width: 100%;
+        width: 80%;
+		
         height: 100%;
         position: relative;
+		
       }
   
       /* Tasto chiudi */
