@@ -118,7 +118,6 @@ margin-top:15px;
         background-color: rgba(0, 0, 0, 0.7);
         justify-content: center;
         align-items: center;
-        z-index:50 !important;
       }
   
       /* Contenuto modal */
@@ -256,7 +255,7 @@ function generahtmlmodal($filepdf){
     $urlcomp = site_url().'/wp-content/plugins/'.$ultimacartella.'/';
     
 return '
-<div style="text-align:center;z-index:5000;">
+<div style="text-align:center;z-index:100;">
 <button class="bottonebello" onclick="openModal()">Apri il Menu</button>
 </div>
 <!-- Modale PDF -->
@@ -515,7 +514,7 @@ function generahtmlmodalridotto($filepdf,$etichetta){
   });
 </script>
 
-<div class="menu-pdf-container" style="overflow:scroll;">
+<div class="menu-pdf-container" style="overflow-y:scroll;overflow-z:hidden;">
 <canvas style="width:100%;" id="the-canvas"></canvas>
 
 <div class="button-container">
