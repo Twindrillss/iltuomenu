@@ -395,7 +395,7 @@ function generahtmlmodalridotto($filepdf,$etichetta){
     $cartelle = dirname(__FILE__);
     $ultimacartella = basename($cartelle);
 
-    $urlcomp = site_url()().'/wp-content/plugins/'.$ultimacartella.'/';
+    $urlcomp = site_url().'/wp-content/plugins/'.$ultimacartella.'/';
     
   return '
   <div style="z-index:5000;">
