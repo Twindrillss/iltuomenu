@@ -74,6 +74,7 @@ if ($controllo){
 function generacssmodal (){
 
     return '<style>
+	
 
     .menu-pdf-container {
 
@@ -107,6 +108,7 @@ margin-top:15px;
 }
         
     .menu-modal {
+		z-index:200;
         display: none;
         position: fixed;
         top: 0;
@@ -409,7 +411,7 @@ function generahtmlmodalridotto($filepdf,$etichetta){
     $urlcomp = site_url().'/wp-content/plugins/'.$ultimacartella.'/';
     
   return '
-  <div style="z-index:5000;">
+  <div>
   <div style="text-align:center;margin-bottom:12px;"><a style="font-size:20px;text-transform: uppercase;cursor: pointer;" onclick="openModal()">'.$etichetta.'</a></div>
   <!-- Modale PDF -->
   <div style="background-color:white;" id="pdfModal" class="menu-modal" onscroll="stopScrollPropagation(event)">
