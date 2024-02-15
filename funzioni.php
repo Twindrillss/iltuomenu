@@ -83,14 +83,12 @@ function generacssmodal (){
 		text-align:center;
       }
       
-	
-	@media only screen and (max-width: 600px) {
-
+@media only screen and (max-width: 600px) {
 canvas {
 margin-top:50px;
 }
 
-	.button-container {
+.button-container {
     display: flex;
     justify-content: space-between;
     padding: 10px;
@@ -119,12 +117,22 @@ margin-top:15px;
         justify-content: center;
         align-items: center;
       }
+
+      @media only screen and (max-width: 600px) {
+      .menu-modal-content {
+      width:100%;
+      }
+	}
+
+   @media only screen and (min-width: 600px) {
+   .menu-modal-content {
+   width:80%;
+   }
+}
   
       /* Contenuto modal */
       .menu-modal-content {
         background-color: #fff;
-        width: 80%;
-		
         height: 100%;
         position: relative;
 		
