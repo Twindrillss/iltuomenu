@@ -259,6 +259,8 @@ function generajsmodal() {
 
 function generahtmlmodal($filepdf){
 
+    if (controllamenu()) {
+
     $cartelle = dirname(__FILE__);
     $ultimacartella = basename($cartelle);
 
@@ -400,10 +402,14 @@ return '
   </div>
 
 ';
-
+} else {
+    return '<div id="menudisattivato"></div>';
+}
 }
 
 function generahtmlmodalridotto($filepdf,$etichetta){
+
+    if (controllamenu()) {
 
     $cartelle = dirname(__FILE__);
     $ultimacartella = basename($cartelle);
@@ -545,5 +551,62 @@ function generahtmlmodalridotto($filepdf,$etichetta){
   </div>
   </div>
   ';
-  
+} else {
+    return '<div id="menudisattivato"></div>';
+}
+  }
+
+  function controllamenu() {
+
+    $cartelle = dirname(__FILE__);
+    $ultimacartella = basename($cartelle);
+
+    $target_dir = $_SERVER['DOCUMENT_ROOT']."/wp-content/plugins/".$ultimacartella."/";
+
+
+    $json_data = file_get_contents($target_dir.'settings.json');
+
+    // Decode the JSON data into a PHP associative array
+    $settings = json_decode($json_data, true);
+
+    $statomenu = false;
+
+    // Controllo su stato "active"
+    if (isset($settings['active']) && $settings['active'] === 'yes') {
+    $statomenu= true;
+    }
+
+
+    return $statomenu;
+
+
+  }
+
+  function scrivisujson ($dato) {
+
+    $cartelle = dirname(__FILE__);
+    $ultimacartella = basename($cartelle);
+
+    $target_dir = $_SERVER['DOCUMENT_ROOT']."/wp-content/plugins/".$ultimacartella."/";
+
+
+    $json_data = file_get_contents($target_dir.'settings.json');
+
+    // Decode the JSON data into a PHP associative array
+    $settings = json_decode($json_data, true);
+
+    if ($settings !== null) { 
+
+        $settings['active'] = $dato;
+
+        // Encode the modified settings array back to JSON format
+        $new_json_data = json_encode($settings, JSON_PRETTY_PRINT);
+
+        // Write the updated JSON data back to the settings.json file
+        file_put_contents($target_dir . 'settings.json', $new_json_data);
+
+
+    }
+
+
   }
