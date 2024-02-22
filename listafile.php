@@ -49,6 +49,7 @@ display:none;
 
 <?php
 
+
 //caricamento globale per db wordpress per tutte le operazioni
 global $wpdb;
 
@@ -58,6 +59,10 @@ $cartelle = dirname(__FILE__);
 $ultimacartella = basename($cartelle);
 
 $target_dir = $_SERVER['DOCUMENT_ROOT']."/wp-content/plugins/".$ultimacartella."/menu/";
+
+
+
+
 ?>
 
 
@@ -202,6 +207,58 @@ $results = $wpdb->get_results($query);
 
 <hr>
 
+
+<?php 
+
+
+$label_stato_menu = '';
+
+if (isset($_POST['invia2'])){
+    if (isset($_POST['stato'])){
+
+        scrivisujson ('yes');
+        
+        $label_stato_menu = 'menu attivo';
+    } else {
+       
+        scrivisujson ('no');
+         $label_stato_menu = 'menu disattivato';
+    }
+    
+}
+
+
+?>
+
+
+
+
+
+
+<h2>Attiva/Disattiva</h2>
+<div class="selettore" style="border-width:2px; border-style:solid; border-color:#dcdcde; border-radius:10px; padding:10px; text-align:center;">
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>?page=iei-menu-dashboard" method="post" enctype="multipart/form-data">
+
+
+
+
+<?php
+if (controllamenu()){
+?>
+<input type="checkbox" id="stato" name="stato" value="1" checked>
+<?php } else { ?>
+<input type="checkbox" id="stato" name="stato" value="1">
+<?php } ?>
+
+  <label for="stato"> ATTIVA IL MENU E RELATIVE POSIZIONI</label><br>
+  <input style="display:none" type="submit" id="invia2" name="invia2" value="Cambia">
+</form>
+</div>
+
+<p style="color:red;font-weight:bold;"><?php echo $label_stato_menu; ?></p>
+
+<hr>
+
 <div style="overflow-x:auto;">
 
 <table>
@@ -309,6 +366,20 @@ function statocheckbox () {
     }
 
 }
+
+
+    // Questa funzione manda il form di controllo attivazione
+    function submitForm() {
+        document.getElementById('invia2').click();
+    }
+
+    // Add event listener to the checkbox
+    document.getElementById('stato').addEventListener('change', function() {
+        
+            // If checkbox is checked, submit the form
+            submitForm();
+        
+    });
 
 </script>
 
